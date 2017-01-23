@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{newpizza.page.title}">NEW PIZZA</title>
+</head>
+<body>
+<form action="#" th:action="@{/pizza/newPizza}" th:object="${newPizza}" method="post">
+    <table>
+        <tr>
+            <td th:text="#{newpizza.name}">Name</td>
+            <td>
+                <input type="text" th:field="*{name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{newpizza.price}">Price</td>
+            <td>
+                <input type="number" th:field="*{price}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{newpizza.ingredients.number}">Number of ingredients</td>
+            <td>
+                <input type="number" th:field="${ingredientsNumber.value}"/>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" name="OK" th:value="#{newpizza.label.button.submit}"/>
+</form>
+</body>
+</html>

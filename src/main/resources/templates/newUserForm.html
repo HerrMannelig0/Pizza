@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{newUser.page.title}">NEW USER</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/addUser}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td th:text="#{newUser.name}">Name</td>
+            <td>
+                <input type="text" th:field="*{name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{newUser.password}">Password</td>
+            <td>
+                <input type="password" th:field="*{password}"/>
+            </td>
+        </tr>
+        <tr>
+            <td th:text="#{newUser.userAuthority}"></td>
+            <td>
+                <input type="text" th:field="*{userAuthority}"/>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" name="OK"/>
+</form>
+
+
+<a href="/"><span th:text="#{mainpage.label}">MAIN PAGE</span></a>
+
+</body>
+</html>

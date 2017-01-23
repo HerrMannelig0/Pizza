@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Hello World!</title>
+    <style>
+        body {
+            background-color: #ffb3b3;
+        }
+
+    </style>
+</head>
+
+<body>
+<article>
+    <header>
+        <p><span th:text="#{hello.actual.user}">USER:</span> <span sec:authentication="name">NAME</span></p>
+    </header>
+</article>
+
+<h1 th:text="#{hello.header}"></h1>
+
+<h3 th:text="#{hello.question}"></h3>
+<table>
+    <tr>
+        <td><a href="/pizza/all" th:text="#{hello.show_all_pizzas}">Show all pizzas</a></td>
+    </tr>
+    <tr sec:authorize="isAuthenticated()">
+        <td><a href="/pizza/newPizza" th:text="#{hello.add_new_pizza}">Add new pizza</a></td>
+    </tr>
+</table>
+<br/>
+<a href="/login" th:text="#{hello.login}">LOGIN</a>
+<br/>
+
+<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" >
+    <input type="submit" th:value="#{hello.label.button.signout}"/>
+</form>
+
+<a sec:authorize="isAuthenticated()" href="/addUser"><label th:text="#{hello.label.button.new_user}">add new user</label></a>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{pizzadetails.page.title}">PIZZA DETAILS</title>
+</head>
+<body>
+<h2 th:utext="${pizza.name}">Pizza</h2>
+<table>
+    <tr>
+        <td th:text="#{pizzadetails.price}">price</td>
+        <td><span th:utext="${pizza.price}">price</span></td>
+    </tr>
+
+</table>
+
+<h4 th:text="#{pizzadetails.ingredients}">Ingredients</h4>
+
+<table>
+
+    <tr th:each="ingredient, stat : ${pizza.ingredients.ingredientsList}">
+        <td>
+            <p th:utext="${pizza.ingredients.ingredientsList[__${stat.index}__].ingredient}" ></p>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

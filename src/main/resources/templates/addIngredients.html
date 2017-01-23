@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" ang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{ingredients.page.title}">ADD INGREDIENTS</title>
+</head>
+<body>
+<h3 th:text="#{ingredients.title}">Ingredients</h3>
+
+<form action="#" th:action="@{/pizza/addIngredients}" th:object="${ingredients}" method="post">
+    <table>
+
+        <tr th:each="ingredient, stat : ${ingredients.ingredientsList}">
+            <td>
+                <input type="text" th:field="${ingredients.ingredientsList[__${stat.index}__].ingredient}" />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" th:value="#{ingredients.add}"/>
+</form>
+
+<script>
+    document.write('<a href="' + document.referrer + '">Previous page</a>');
+</script>
+
+</body>
+</html>
